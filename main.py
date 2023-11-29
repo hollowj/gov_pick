@@ -8,6 +8,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 # 打开Firefox浏览器
 opts=webdriver.ChromeOptions()
+opts.add_experimental_option("detach", True)
 # opts._binary_location="/Users/huwenjun1/PycharmProjects/gov_pick/driver/chromedriver"
 browser = webdriver.Chrome(opts)
 
