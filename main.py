@@ -32,7 +32,7 @@ def getToFarenLoginBtn():
 
 
 def getFaRenLoginPageBtn():
-    xPath="/html/body/div[2]/div/div/div[3]/button"
+    xPath="/html/body/div/div[3]/form/div/div[2]/div[1]/a[2]"
     return GetElementWaitByXPath(xPath)
 
 
@@ -67,16 +67,20 @@ if __name__ == '__main__':
     txt_pwd.send_keys("Ab123456")
     btn_faRenLogin=getFaRenLoginBtn()
     btn_faRenLogin.click()
-    time.sleep(10)
-
-
+    while True:
+        if browser.current_url=="https://yzzt.wuhan.gov.cn/fwq/front/#/home":
+            ele=GetElementWaitByXPath("/html/body/div/div[1]/div[5]/div[2]/div[1]/div[2]/div/div[1]")
+            if ele.text.startswith("欢迎"):
+                break
+        time.sleep(1)
     # 停留三秒
     # 关闭浏览器
     # browser.quit()
+    browser.get("https://yzzt.wuhan.gov.cn/fwq/front/#/produce-detail?id=13")
     while True:
-        browser.get("https://yzzt.wuhan.gov.cn/fwq/front/#/produce-detail?id=13")
         btn=getBuyBtn()
         btn.click()
         time.sleep(2)
+        browser.refresh()
 
 
